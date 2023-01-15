@@ -36,10 +36,12 @@ float h = 0.0;
 
 // WIFI
 
+String internal_id_ktp = "51372254";
+
 const char* ssid = "A22";
 const char* pass = "00000001";
-const uint16_t port = 80;
 const char* host = "192.168.181.85";
+const uint16_t port = 80;
 
 void setup() {
   // put your setup code here, to run once:
@@ -95,7 +97,7 @@ void loop() {
       tag += rfid.uid.uidByte[i];
     }
     Serial.println(tag);
-    if (tag == "51372254") {
+    if (tag == internal_id_ktp) {
       Serial.println("Access Granted!");
       LinkRFID = "http://" + String(host) + "/moduliot/bukapintu.php";
       http.begin(client, LinkRFID);
